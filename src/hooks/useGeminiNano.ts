@@ -35,7 +35,7 @@ export const useGeminiNano = (): UseGeminiNanoReturn => {
 
     // Estados para os Parâmetros do Modelo
     const [modelParams, setModelParams] = useState<ModelParams | null>(null);
-    const [temperature, setTemperature] = useState(1.0);
+    const [temperature, setTemperature] = useState(0.4); // Changed default temperature to 0.4
     const [topK, setTopK] = useState(3);
 
     // Refs
