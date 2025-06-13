@@ -139,4 +139,4 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 ---
 
-Made with ❤️ by [Felipe Chierice](https://byomess.github.io/docs/portfolio.html)
+Made with ❤️ (and AI) by [Felipe Chierice](https://byomess.github.io/docs/portfolio.html)
