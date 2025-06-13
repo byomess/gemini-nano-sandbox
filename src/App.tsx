@@ -11,7 +11,7 @@ import {
 } from './components';
 import { useGeminiNano } from './hooks/useGeminiNano';
 
-// --- Componente Principal da Aplicação ---
+// --- Main Application Component ---
 export default function App() {
     const { t } = useTranslation();
     
@@ -167,20 +167,20 @@ export default function App() {
                             </div>
                         )}
 
-                        {/* Mensagem quando não está pronto */}
+                        {/* Message when not ready */}
                         {status !== 'ready' && (
                             <div className="flex-1 flex items-center justify-center">
                                 <div className="text-center p-8">
                                     <div className="text-6xl mb-4 animate-pulse">🤖</div>
                                     <h3 className="text-xl font-semibold text-slate-300 mb-2">
-                                        {status === 'downloading' ? 'Baixando modelo...' : 
-                                         status === 'initializing' ? 'Inicializando...' : 
-                                         'Configure o Gemini Nano'}
+                                        {status === 'downloading' ? t('app.downloadingTitle') : 
+                                         status === 'initializing' ? t('app.initializingTitle') : 
+                                         t('app.setupTitle')}
                                     </h3>
                                     <p className="text-slate-500">
-                                        {status === 'downloading' ? 'O modelo está sendo baixado em segundo plano.' :
-                                         status === 'initializing' ? 'Preparando a IA para uso.' :
-                                         'Clique em "Iniciar" no painel lateral para começar.'}
+                                        {status === 'downloading' ? t('app.downloadingDescription') :
+                                         status === 'initializing' ? t('app.initializingDescription') :
+                                         t('app.setupDescription')}
                                     </p>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@ export default function App() {
                     </div>
                 </main>
 
-                {/* Rodapé */}
+                {/* Footer */}
                 <footer className="mt-12 text-center text-sm text-slate-500 relative">
                     <div className="max-w-2xl mx-auto">
                         <p className="mb-2">{t('footer.description')}</p>

@@ -57,6 +57,14 @@
     "error": "Error: {{message}}",
     "apiNotFound": "API LanguageModel no encontrada. Asegúrate de estar en Chrome con las flags correctas."
   },
+  "app": {
+    "setupTitle": "Configurar Gemini Nano",
+    "downloadingTitle": "Descargando modelo...",
+    "initializingTitle": "Inicializando...",
+    "setupDescription": "Haz clic en \"Iniciar\" en el panel lateral para comenzar.",
+    "downloadingDescription": "El modelo se está descargando en segundo plano.",
+    "initializingDescription": "Preparando la IA para su uso."
+  },
   "prompt": {
     "placeholder": "Escribe tu pregunta o prompt aquí...",
     "send": "Enviar",

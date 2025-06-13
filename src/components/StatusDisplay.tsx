@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ModelStatus } from '../types/gemini';
 import { IconCheckCircle, IconClock, IconDownload, IconLoader, IconXCircle } from './Icons';
 import { StatusIndicator } from './StatusIndicator';
@@ -10,6 +11,8 @@ interface StatusDisplayProps {
 }
 
 export const StatusDisplay: React.FC<StatusDisplayProps> = ({ status, statusMessage }) => {
+    const { t } = useTranslation();
+    
     const getStatusColor = (status: ModelStatus) => {
         switch (status) {
             case 'ready': return 'from-green-500/20 to-emerald-500/10 border-green-500/30';
@@ -37,7 +40,7 @@ export const StatusDisplay: React.FC<StatusDisplayProps> = ({ status, statusMess
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
         >
-            {/* Efeito de pulso para status ativo */}
+            {/* Pulse effect for active status */}
             {(status === 'initializing' || status === 'downloading') && (
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse"></div>
             )}
@@ -52,10 +55,10 @@ export const StatusDisplay: React.FC<StatusDisplayProps> = ({ status, statusMess
                 
                 <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-slate-200 mb-1 capitalize">
-                        Status: {status === 'ready' ? 'Pronto' : 
-                               status === 'initializing' ? 'Inicializando' : 
-                               status === 'downloading' ? 'Baixando' : 
-                               status === 'error' ? 'Erro' : 'Aguardando'}
+                        Status: {status === 'ready' ? t('controls.status.ready') : 
+                               status === 'initializing' ? t('controls.status.initializing') : 
+                               status === 'downloading' ? t('controls.status.downloading') : 
+                               status === 'error' ? t('controls.status.error') : t('controls.status.unverified')}
                     </h3>
                     <p className="text-slate-300 text-sm leading-relaxed break-words">
                         {statusMessage}
