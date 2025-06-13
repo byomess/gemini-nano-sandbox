@@ -34,10 +34,11 @@ This playground provides a user-friendly interface to interact with the Gemini N
 
 To use Gemini Nano, your browser needs specific configuration. This application includes a setup modal that guides you, but here's a summary:
 
-1.  **Get Chrome Canary or Dev Channel:**
-    *   You need **Chrome Canary (version 131+)** or **Chrome Dev**.
+1.  **Get Chrome Canary, Dev, or Beta Channel:**
+    *   You need **Chrome Canary (version 138+)**, **Chrome Dev (version 138+)**, or **Chrome Beta (version 138+)**.
     *   [Download Chrome Canary](https://www.google.com/chrome/canary/)
     *   [Download Chrome Dev](https://www.google.com/chrome/dev/)
+    *   [Download Chrome Beta](https://www.google.com/chrome/beta/)
 
 2.  **Enable Experimental Flags:**
     *   Open Chrome and navigate to `chrome://flags`.
@@ -71,8 +72,9 @@ For the most up-to-date and detailed instructions, please refer to the [official
 *   **Streaming Mode:** Real-time response streaming enabled by default
 
 ### Browser Compatibility
-*   **Chrome Canary 131+** (Recommended)
-*   **Chrome Dev Channel** (Alternative)
+*   **Chrome Canary 138+** (Recommended)
+*   **Chrome Dev Channel 138+** (Alternative)
+*   **Chrome Beta Channel 138+** (Experimental support)
 *   **Experimental Features:** Requires manual flag enablement
 *   **GPU Acceleration:** Optional but recommended for better performance
 
