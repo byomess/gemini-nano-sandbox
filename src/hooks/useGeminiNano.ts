@@ -78,7 +78,8 @@ export const useGeminiNano = (): UseGeminiNanoReturn => {
                 try {
                     const params = await window.LanguageModel.params();
                     setModelParams(params);
-                    setTemperature(params.defaultTemperature);
+                    // Manter temperatura padrão de 0.4 ao invés de usar params.defaultTemperature
+                    // setTemperature(params.defaultTemperature);
                     setTopK(params.defaultTopK);
                 } catch (e) {
                     console.error(t('errors.modelParamsLoad'), e);

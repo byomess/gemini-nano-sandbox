@@ -5,20 +5,41 @@
   },
   "controls": {
     "title": "Control Panel",
+    "subtitle": "Model Settings",
+    "modelInfo": {
+      "title": "Model Information",
+      "subtitle": "Model statistics and details",
+      "maxTemperature": "Max Temperature",
+      "maxTopK": "Max Top-K",
+      "defaultTemperature": "Default Temperature",
+      "defaultTopK": "Default Top-K"
+    },
+    "status": {
+      "ready": "Ready",
+      "downloading": "Downloading",
+      "initializing": "Initializing",
+      "error": "Error",
+      "unverified": "Checking"
+    },
     "temperature": {
-      "label": "Temperature:",
-      "description": "Higher values = more creative. Set before starting."
+      "label": "Temperature",
+      "description": "Controls response creativity. Higher values generate more creative and unpredictable responses."
     },
     "topK": {
-      "label": "Top-K:",
-      "description": "Changes the set of tokens considered. Set before starting."
+      "label": "Top-K",
+      "description": "Limits the number of tokens considered. Lower values generate more focused responses."
     },
     "buttons": {
-      "start": "Start Session",
-      "restart": "Restart Session with New Parameters"
+      "start": "Initialize Model",
+      "restart": "Restart Model",
+      "startSubtitle": "Initialize the model",
+      "restartSubtitle": "Restart the model"
     },
     "download": {
-      "progress": "{{progress}}% completed"
+      "title": "Model Download",
+      "progress": "{{progress}}% completed",
+      "downloading": "Downloading model...",
+      "subtitle": "Downloading required files"
     }
   },
   "status": {

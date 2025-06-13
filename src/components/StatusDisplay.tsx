@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import type { ModelStatus } from '../types/gemini';
+import { IconCheckCircle, IconClock, IconDownload, IconLoader, IconXCircle } from './Icons';
 import { StatusIndicator } from './StatusIndicator';
 
 interface StatusDisplayProps {
@@ -8,10 +10,58 @@ interface StatusDisplayProps {
 }
 
 export const StatusDisplay: React.FC<StatusDisplayProps> = ({ status, statusMessage }) => {
+    const getStatusColor = (status: ModelStatus) => {
+        switch (status) {
+            case 'ready': return 'from-green-500/20 to-emerald-500/10 border-green-500/30';
+            case 'initializing': return 'from-blue-500/20 to-cyan-500/10 border-blue-500/30';
+            case 'downloading': return 'from-purple-500/20 to-indigo-500/10 border-purple-500/30';
+            case 'error': return 'from-red-500/20 to-rose-500/10 border-red-500/30';
+            default: return 'from-slate-500/20 to-gray-500/10 border-slate-500/30';
+        }
+    };
+
+    const getStatusIcon = (status: ModelStatus) => {
+        switch (status) {
+            case 'ready': return <IconCheckCircle className="w-6 h-6 text-green-400" />;
+            case 'initializing': return <IconLoader className="w-6 h-6 text-blue-400" />;
+            case 'downloading': return <IconDownload className="w-6 h-6 text-purple-400" />;
+            case 'error': return <IconXCircle className="w-6 h-6 text-red-400" />;
+            default: return <IconClock className="w-6 h-6 text-slate-400" />;
+        }
+    };
+
     return (
-        <div className="flex items-center gap-3 mb-4 sm:mb-6 p-2 sm:p-3 bg-slate-900/90 backdrop-blur-sm rounded-lg border border-slate-800 transition-all duration-300 transform hover:border-slate-700">
-            <StatusIndicator status={status} />
-            <span className="text-slate-300 text-xs sm:text-sm flex-1 line-clamp-2 md:line-clamp-none">{statusMessage}</span>
-        </div>
+        <motion.div 
+            className={`bg-gradient-to-r ${getStatusColor(status)} backdrop-blur-sm rounded-xl border p-4 mb-6 relative overflow-hidden`}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+        >
+            {/* Efeito de pulso para status ativo */}
+            {(status === 'initializing' || status === 'downloading') && (
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse"></div>
+            )}
+            
+            <div className="flex items-start gap-4 relative z-10">
+                <div className="flex-shrink-0">
+                    <div className="flex items-center gap-2">
+                        {getStatusIcon(status)}
+                        <StatusIndicator status={status} />
+                    </div>
+                </div>
+                
+                <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-slate-200 mb-1 capitalize">
+                        Status: {status === 'ready' ? 'Pronto' : 
+                               status === 'initializing' ? 'Inicializando' : 
+                               status === 'downloading' ? 'Baixando' : 
+                               status === 'error' ? 'Erro' : 'Aguardando'}
+                    </h3>
+                    <p className="text-slate-300 text-sm leading-relaxed break-words">
+                        {statusMessage}
+                    </p>
+                </div>
+            </div>
+        </motion.div>
     );
 };

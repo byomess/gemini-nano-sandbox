@@ -5,20 +5,41 @@
   },
   "controls": {
     "title": "Panneau de Contrôle",
+    "subtitle": "Paramètres du Modèle",
+    "modelInfo": {
+      "title": "Informations du Modèle",
+      "subtitle": "Statistiques et détails du modèle",
+      "maxTemperature": "Température Maximale",
+      "maxTopK": "Top-K Maximum",
+      "defaultTemperature": "Température par Défaut",
+      "defaultTopK": "Top-K par Défaut"
+    },
+    "status": {
+      "ready": "Prêt",
+      "downloading": "Téléchargement",
+      "initializing": "Initialisation",
+      "error": "Erreur",
+      "unverified": "Vérification"
+    },
     "temperature": {
-      "label": "Température :",
-      "description": "Valeurs plus élevées = plus créatif. Configurez avant de commencer."
+      "label": "Température",
+      "description": "Contrôle la créativité des réponses. Des valeurs plus élevées génèrent des réponses plus créatives et imprévisibles."
     },
     "topK": {
-      "label": "Top-K :",
-      "description": "Change l'ensemble de tokens considérés. Configurez avant de commencer."
+      "label": "Top-K",
+      "description": "Limite le nombre de tokens considérés. Des valeurs plus faibles génèrent des réponses plus ciblées."
     },
     "buttons": {
-      "start": "Démarrer Session",
-      "restart": "Redémarrer Session avec Nouveaux Paramètres"
+      "start": "Initialiser Modèle",
+      "restart": "Redémarrer Modèle",
+      "startSubtitle": "Initialiser le modèle",
+      "restartSubtitle": "Redémarrer le modèle"
     },
     "download": {
-      "progress": "{{progress}}% terminé"
+      "title": "Téléchargement du Modèle",
+      "progress": "{{progress}}% terminé",
+      "downloading": "Téléchargement du modèle...",
+      "subtitle": "Téléchargement des fichiers nécessaires"
     }
   },
   "status": {

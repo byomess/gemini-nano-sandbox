@@ -1,4 +1,5 @@
 import {
+    AlertCircle,
     AlertTriangle,
     Check,
     CheckCircle,
@@ -27,7 +28,8 @@ import {
     Terminal,
     Wifi,
     Wrench,
-    XCircle
+    XCircle,
+    Zap
 } from 'lucide-react';
 import React from 'react';
 
@@ -63,6 +65,8 @@ export const IconLink = Link;
 export const IconTarget = Target;
 export const IconRotate = RotateCcw;
 export const IconLanguages = Languages;
+export const IconZap = Zap;
+export const IconAlertCircle = AlertCircle;
 export const IconX = ({ className, ...props }: React.ComponentProps<'svg'>) => (
     <XCircle className={className} {...props} />
 );
