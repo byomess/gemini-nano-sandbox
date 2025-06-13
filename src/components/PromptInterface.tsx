@@ -19,27 +19,27 @@ export const PromptInterface: React.FC<PromptInterfaceProps> = ({
 }) => {
     const { t } = useTranslation();
     
-    // Função para ajustar a altura do textarea automaticamente
+    // Function to automatically adjust textarea height
     const handleTextareaInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const textarea = e.target;
-        // Reset height para calcular o tamanho correto
+        // Reset height to calculate correct size
         textarea.style.height = 'auto';
-        // Ajusta a altura com base no conteúdo
+        // Adjust height based on content
         textarea.style.height = `${Math.min(300, Math.max(100, textarea.scrollHeight))}px`;
-        // Passa o valor para o handler
+        // Pass value to handler
         onPromptChange(textarea.value);
     };
 
     return (
         <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-700/50 shadow-2xl relative overflow-hidden">
-            {/* Efeito de brilho no topo */}
+            {/* Glow effect on top */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
             
-            {/* Área do textarea */}
+            {/* Textarea area */}
             <div className="relative mb-6">
                 <label htmlFor="prompt-input" className="flex text-sm font-medium text-slate-300 mb-3 items-center gap-2">
                     <IconSparkles className="w-4 h-4" />
-                    Digite sua pergunta ou prompt:
+                    {t('prompt.label')}
                 </label>
                 <textarea
                     id="prompt-input"
@@ -53,13 +53,13 @@ export const PromptInterface: React.FC<PromptInterfaceProps> = ({
                     }}
                 />
                 
-                {/* Contador de caracteres */}
+                {/* Character counter */}
                 <div className="absolute bottom-3 right-3 text-xs text-slate-500">
-                    {prompt.length} caracteres
+                    {prompt.length} {t('prompt.characterCount')}
                 </div>
             </div>
             
-            {/* Botões de ação */}
+            {/* Action buttons */}
             <div className="flex flex-col sm:flex-row gap-3">
                 <button
                     onClick={onSendPrompt}
@@ -69,7 +69,7 @@ export const PromptInterface: React.FC<PromptInterfaceProps> = ({
                     {isLoading ? (
                         <>
                             <IconLoader className="w-5 h-5" />
-                            Gerando...
+                            {t('prompt.generating')}
                         </>
                     ) : (
                         <>
@@ -91,20 +91,15 @@ export const PromptInterface: React.FC<PromptInterfaceProps> = ({
                 </button>
             </div>
 
-            {/* Sugestões de prompts */}
+            {/* Prompt suggestions */}
             {!prompt && (
                 <div className="mt-6 pt-6 border-t border-slate-700/50">
                     <p className="text-sm text-slate-400 mb-3 flex items-center gap-2">
                         <IconSparkles className="w-4 h-4" />
-                        Sugestões de prompts:
+                        {t('prompt.suggestions.title')}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {[
-                            "Explique como funciona a inteligência artificial",
-                            "Crie uma função JavaScript para ordenar arrays",
-                            "Quais são as melhores práticas de React?",
-                            "Como otimizar performance web?"
-                        ].map((suggestion, index) => (
+                        {(t('prompt.suggestions.examples', { returnObjects: true }) as string[]).map((suggestion: string, index: number) => (
                             <button
                                 key={index}
                                 onClick={() => onPromptChange(suggestion)}

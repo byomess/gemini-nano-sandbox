@@ -10,10 +10,10 @@ interface OutputDisplayProps {
 export const OutputDisplay: React.FC<OutputDisplayProps> = ({ output }) => {
     const { t } = useTranslation();
     
-    // Referência para o container de output
+    // Reference to the output container
     const outputRef = React.useRef<HTMLDivElement>(null);
     
-    // Efeito para scrollar automaticamente quando o output for atualizado
+    // Effect to auto-scroll when output is updated
     React.useEffect(() => {
         if (outputRef.current) {
             outputRef.current.scrollTop = outputRef.current.scrollHeight;
@@ -25,7 +25,7 @@ export const OutputDisplay: React.FC<OutputDisplayProps> = ({ output }) => {
             ref={outputRef}
             className="flex-grow mt-2 sm:mt-4 bg-gradient-to-br from-slate-900/95 to-slate-800/95 p-4 sm:p-6 rounded-xl border border-slate-700/50 overflow-y-auto shadow-xl transition-all duration-300 max-h-[60vh] min-h-[300px] sm:min-h-[350px] backdrop-blur-sm relative"
         >
-            {/* Efeito de gradiente no topo */}
+            {/* Gradient effect on top */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
             
             {output ? (
@@ -43,7 +43,7 @@ export const OutputDisplay: React.FC<OutputDisplayProps> = ({ output }) => {
                             {t('prompt.empty')}
                         </p>
                         <p className="text-slate-600 text-sm mt-2">
-                            Digite sua pergunta acima para começar
+                            {t('prompt.startPrompt')}
                         </p>
                     </div>
                 </div>

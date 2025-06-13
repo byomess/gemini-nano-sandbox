@@ -62,7 +62,19 @@
     "send": "Enviar",
     "stop": "Detener",
     "generating": "Generando respuesta...",
-    "empty": "La respuesta aparecerá aquí..."
+    "empty": "La respuesta aparecerá aquí...",
+    "label": "Escribe tu pregunta o prompt:",
+    "characterCount": "caracteres",
+    "startPrompt": "Escribe tu pregunta arriba para comenzar",
+    "suggestions": {
+      "title": "Sugerencias de prompts:",
+      "examples": [
+        "Explica cómo funciona la inteligencia artificial",
+        "Crea una función JavaScript para ordenar arrays",
+        "¿Cuáles son las mejores prácticas de React?",
+        "¿Cómo optimizar el rendimiento web?"
+      ]
+    }
   },
   "output": {
     "error": "Error: {{message}}",
