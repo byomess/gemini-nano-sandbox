@@ -15,15 +15,20 @@ This playground provides a user-friendly interface to interact with the Gemini N
 ## ✨ Features
 
 *   **Direct Interaction with Gemini Nano:** Send prompts and receive AI-generated responses.
+*   **Real-time Streaming:** Responses are streamed in real-time as the AI generates them.
 *   **On-Device Processing:** Ensures privacy and speed by running the model locally in your browser.
-*   **Adjustable Model Parameters:** Fine-tune `temperature` and `Top-K` settings before starting a session.
-*   **Real-time Status Updates:** Monitor the model's status (initializing, downloading, ready, error).
-*   **Download Progress:** Track the download of the on-device model.
-*   **Stop Generation:** Interrupt the AI if needed.
-*   **Responsive Design:** Works smoothly on various screen sizes.
-*   **Internationalization (i18n):** Supports multiple languages with an easy-to-use language selector. (Currently: English, Portuguese, Spanish, French, German)
-*   **Comprehensive Setup Guide:** A built-in modal helps users configure their browser for Gemini Nano.
-*   **Copy-to-Clipboard:** Easily copy flags and commands from the setup guide.
+*   **Adjustable Model Parameters:** Fine-tune `temperature` (default: 0.4) and `Top-K` settings before starting a session.
+*   **Real-time Status Updates:** Monitor the model's status (initializing, downloading, ready, error) with visual indicators.
+*   **Download Progress:** Track the download of the on-device model with real-time progress indicators and event monitoring.
+*   **Intelligent Generation Control:** Start, stop, or interrupt AI generation with advanced AbortController support.
+*   **Advanced Markdown Support:** Rich text rendering with syntax highlighting, tables, blockquotes, lists, and copy-to-clipboard for code blocks.
+*   **Smart User Interface:** Auto-resizing text areas, character counters, auto-scroll output, and smooth animations.
+*   **Smooth Animations:** Enhanced user experience with Framer Motion animations for all interactions and state changes.
+*   **Responsive Design:** Works smoothly on various screen sizes and devices with adaptive layouts.
+*   **Internationalization (i18n):** Supports multiple languages with flag-based language selector. (Currently: English, Portuguese, Spanish, French, German)
+*   **Intelligent Setup Guide:** Auto-detecting setup modal that appears when browser configuration is needed.
+*   **Enhanced Copy Features:** Copy flags, commands, code blocks, and generated responses with visual feedback.
+*   **Session Management:** Automatic session cleanup and intelligent re-initialization when needed.
 
 ## 🛠️ Setup for Gemini Nano
 
@@ -56,6 +61,20 @@ To use Gemini Nano, your browser needs specific configuration. This application 
     *   You can check the model download status at `chrome://components` (look for "Optimization Guide On Device Model").
 
 For the most up-to-date and detailed instructions, please refer to the [official Chrome AI documentation](https://developer.chrome.com/docs/ai/get-started).
+
+## ⚙️ Advanced Configuration
+
+### Model Parameters
+*   **Temperature:** Default set to 0.4 for balanced creativity and consistency
+*   **Top-K:** Dynamically set based on model capabilities  
+*   **Session Management:** Automatic cleanup and re-initialization
+*   **Streaming Mode:** Real-time response streaming enabled by default
+
+### Browser Compatibility
+*   **Chrome Canary 131+** (Recommended)
+*   **Chrome Dev Channel** (Alternative)
+*   **Experimental Features:** Requires manual flag enablement
+*   **GPU Acceleration:** Optional but recommended for better performance
 
 ## 🚀 Getting Started (Development)
 
@@ -112,15 +131,39 @@ To run this project locally:
     *(If using npm: `npm run lint`)*
     *(If using yarn: `yarn lint`)*
 
+### Preview Production Build
+
+1.  **Preview the built application:**
+    ```bash
+    pnpm preview
+    ```
+    *(If using npm: `npm run preview`)*
+    *(If using yarn: `yarn preview`)*
+
 ## 💻 Technologies Used
 
 *   **React 19:** For building the user interface.
 *   **TypeScript:** For static typing and improved developer experience.
 *   **Vite:** As the build tool and development server.
 *   **Tailwind CSS:** For utility-first styling.
+*   **Framer Motion:** For smooth animations and transitions.
 *   **i18next & react-i18next:** For internationalization.
+*   **React Markdown:** For rich text rendering with markdown support.
+*   **React Syntax Highlighter:** For code syntax highlighting.
 *   **Lucide React:** For icons.
 *   **ESLint:** For code linting.
+
+## 🏗️ Architecture & Technical Features
+
+*   **Custom Hook Architecture:** Centralized state management with `useGeminiNano` hook
+*   **Real-time Streaming:** Implements streaming responses using ReadableStream API
+*   **Advanced Abort Control:** Uses AbortController for proper request cancellation
+*   **Intelligent Session Management:** Automatic session cleanup and re-initialization
+*   **Event-driven Progress Monitoring:** Real-time download progress using model monitor events
+*   **TypeScript Integration:** Custom types for Gemini Nano API with full type safety
+*   **Performance Optimization:** useCallback hooks and efficient re-renders
+*   **Responsive State Management:** Complex state handling for multiple UI states
+*   **Auto-detection Systems:** Intelligent API availability and error detection
 
 ## 🤝 Contributing
 
