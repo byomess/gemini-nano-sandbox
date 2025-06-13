@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+![Gemini Nano Sandbox Demo](http://byomess.github.io/assets/gemini-nano-sandbox.png)
+
 **Experience the power of Google's Gemini Nano on-device AI model directly in your browser!**
 
 This playground provides a user-friendly interface to interact with the Gemini Nano Prompt API, allowing you to experiment with its capabilities without sending your data to external servers. Enjoy enhanced privacy and rapid responses, all running locally.
