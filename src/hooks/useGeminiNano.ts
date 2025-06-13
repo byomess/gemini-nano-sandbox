@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ModelParams, ModelStatus, Session } from '../types/gemini';
 
 interface UseGeminiNanoReturn {
@@ -21,9 +22,11 @@ interface UseGeminiNanoReturn {
 }
 
 export const useGeminiNano = (): UseGeminiNanoReturn => {
+    const { t } = useTranslation();
+    
     // Estados do hook
     const [status, setStatus] = useState<ModelStatus>('unverified');
-    const [statusMessage, setStatusMessage] = useState('Clique em "Iniciar" para verificar a disponibilidade do modelo.');
+    const [statusMessage, setStatusMessage] = useState('');
     const [session, setSession] = useState<Session | null>(null);
     const [output, setOutput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -37,6 +40,13 @@ export const useGeminiNano = (): UseGeminiNanoReturn => {
 
     // Refs
     const abortControllerRef = useRef<AbortController | null>(null);
+
+    // Efeito para definir mensagem inicial de status
+    useEffect(() => {
+        if (status === 'unverified' && !statusMessage) {
+            setStatusMessage(t('status.initialMessage'));
+        }
+    }, [t, status, statusMessage]);
 
     // Efeito para verificar se a API está disponível
     useEffect(() => {
@@ -53,13 +63,13 @@ export const useGeminiNano = (): UseGeminiNanoReturn => {
                 setIsApiAvailable(true);
             } catch (error) {
                 // Se houve erro ao verificar, assumir que não está disponível
-                console.error('Erro ao verificar disponibilidade da API:', error);
+                console.error(t('errors.apiAvailabilityCheck'), error);
                 setIsApiAvailable(false);
             }
         };
         
         checkApiAvailability();
-    }, []);
+    }, [t]);
 
     // Efeito para carregar os parâmetros do modelo ao montar
     useEffect(() => {
@@ -71,40 +81,40 @@ export const useGeminiNano = (): UseGeminiNanoReturn => {
                     setTemperature(params.defaultTemperature);
                     setTopK(params.defaultTopK);
                 } catch (e) {
-                    console.error("Não foi possível carregar os parâmetros do modelo:", e);
+                    console.error(t('errors.modelParamsLoad'), e);
                 }
             }
         }
         fetchParams();
-    }, []);
+    }, [t]);
 
     // Função para inicializar o modelo
     const handleInitialize = useCallback(async () => {
         if (!window.LanguageModel) {
             setStatus('error');
-            setStatusMessage('API LanguageModel não encontrada. Certifique-se de que está no Chrome com as flags corretas.');
+            setStatusMessage(t('status.apiNotFound'));
             setIsApiAvailable(false);
             return;
         }
 
         try {
             setStatus('initializing');
-            setStatusMessage('Verificando disponibilidade do modelo...');
+            setStatusMessage(t('status.checkingAvailability'));
 
             const availability = await window.LanguageModel.availability();
 
             if (availability === 'unavailable') {
                 setStatus('error');
-                setStatusMessage('Modelo indisponível. Verifique os requisitos de hardware e sistema.');
+                setStatusMessage(t('status.modelUnavailable'));
                 setIsApiAvailable(false);
                 return;
             }
 
             if (availability === 'downloadable' || availability === 'downloading') {
                 setStatus('downloading');
-                setStatusMessage('Fazendo download do modelo. Isso pode levar alguns minutos.');
+                setStatusMessage(t('status.downloading'));
             } else {
-                setStatusMessage('Modelo disponível. Criando sessão...');
+                setStatusMessage(t('status.creatingSession'));
             }
 
             // Destrói a sessão anterior se existir
@@ -120,19 +130,19 @@ export const useGeminiNano = (): UseGeminiNanoReturn => {
                     monitor.addEventListener("downloadprogress", (e: { loaded?: number }) => {
                         const progress = e.loaded ? Math.round(e.loaded * 100) : 0;
                         setDownloadProgress(progress);
-                        setStatusMessage(`Baixando modelo: ${progress}%`);
+                        setStatusMessage(t('status.downloadProgress', { progress }));
                     });
                 },
             });
 
             setSession(newSession);
             setStatus('ready');
-            setStatusMessage(`Sessão pronta com Temperatura=${temperature} e Top-K=${topK}.`);
+            setStatusMessage(t('status.sessionReady', { temperature, topK }));
             setOutput('');
         } catch (error: unknown) {
-            const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+            const errorMessage = error instanceof Error ? error.message : t('status.unknownError');
             setStatus('error');
-            setStatusMessage(`Erro: ${errorMessage}`);
+            setStatusMessage(t('status.error', { message: errorMessage }));
             
             // Se o erro indica que o dispositivo não pode criar uma sessão ou problemas de disponibilidade, marcar API como indisponível
             if (errorMessage.includes('unable to create a session') || 
@@ -144,7 +154,7 @@ export const useGeminiNano = (): UseGeminiNanoReturn => {
             
             console.error(error);
         }
-    }, [session, temperature, topK]);
+    }, [session, temperature, topK, t]);
 
     // Função para enviar prompt
     const handleSendPrompt = useCallback(async (prompt: string, isStreaming = true) => {
@@ -174,21 +184,21 @@ export const useGeminiNano = (): UseGeminiNanoReturn => {
             }
         } catch (error: unknown) {
             if (error instanceof Error && error.name !== 'AbortError') {
-                setOutput(prev => prev + `\n\n--- Erro: ${error.message} ---`);
+                setOutput(prev => prev + `\n\n--- ${t('output.error', { message: error.message })} ---`);
             }
         } finally {
             setIsLoading(false);
             abortControllerRef.current = null;
         }
-    }, [session]);
+    }, [session, t]);
 
     // Função para parar a geração
     const handleStop = useCallback(() => {
         if (abortControllerRef.current) {
             abortControllerRef.current.abort();
-            setOutput(prev => prev + '\n\n--- Geração interrompida ---');
+            setOutput(prev => prev + `\n\n--- ${t('output.interrupted')} ---`);
         }
-    }, []);
+    }, [t]);
 
     return {
         status,

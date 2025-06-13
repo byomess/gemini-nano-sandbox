@@ -1,10 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface OutputDisplayProps {
     output: string;
 }
 
 export const OutputDisplay: React.FC<OutputDisplayProps> = ({ output }) => {
+    const { t } = useTranslation();
+    
     // Referência para o container de output
     const outputRef = React.useRef<HTMLDivElement>(null);
     
@@ -24,7 +27,7 @@ export const OutputDisplay: React.FC<OutputDisplayProps> = ({ output }) => {
                 <div className="animate-in fade-in duration-300">{output}</div>
             ) : (
                 <div className="text-slate-500 h-full flex items-center justify-center italic text-center p-4">
-                    A resposta do modelo aparecerá aqui...
+                    {t('prompt.empty')}
                 </div>
             )}
         </div>

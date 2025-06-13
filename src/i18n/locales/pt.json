@@ -1,0 +1,117 @@
+{
+  "header": {
+    "title": "Gemini Nano Playground",
+    "subtitle": "Teste a API Prompt diretamente no seu navegador."
+  },
+  "controls": {
+    "title": "Painel de Controle",
+    "temperature": {
+      "label": "Temperatura:",
+      "description": "Valores mais altos = mais criativo. Use antes de iniciar."
+    },
+    "topK": {
+      "label": "Top-K:",
+      "description": "Altera o conjunto de tokens considerados. Use antes de iniciar."
+    },
+    "buttons": {
+      "start": "Iniciar Sessão",
+      "restart": "Reiniciar Sessão com Novos Parâmetros"
+    },
+    "download": {
+      "progress": "{{progress}}% concluído"
+    }
+  },
+  "status": {
+    "idle": "Aguardando inicialização",
+    "initializing": "Inicializando...",
+    "downloading": "Fazendo download do modelo. Isso pode levar alguns minutos.",
+    "ready": "Pronto para uso",
+    "initialMessage": "Clique em \"Iniciar\" para verificar a disponibilidade do modelo.",
+    "checkingAvailability": "Verificando disponibilidade do modelo...",
+    "modelUnavailable": "Modelo indisponível. Verifique os requisitos de hardware e sistema.",
+    "creatingSession": "Modelo disponível. Criando sessão...",
+    "downloadProgress": "Baixando modelo: {{progress}}%",
+    "sessionReady": "Sessão pronta com Temperatura={{temperature}} e Top-K={{topK}}.",
+    "unknownError": "Erro desconhecido",
+    "error": "Erro: {{message}}",
+    "apiNotFound": "API LanguageModel não encontrada. Certifique-se de que está no Chrome com as flags corretas."
+  },
+  "prompt": {
+    "placeholder": "Digite sua pergunta ou prompt aqui...",
+    "send": "Enviar",
+    "stop": "Parar",
+    "generating": "Gerando resposta...",
+    "empty": "A resposta aparecerá aqui..."
+  },
+  "output": {
+    "error": "Erro: {{message}}",
+    "interrupted": "Geração interrompida"
+  },
+  "errors": {
+    "modelParamsLoad": "Não foi possível carregar os parâmetros do modelo:",
+    "apiAvailabilityCheck": "Erro ao verificar disponibilidade da API:"
+  },
+  "setupModal": {
+    "title": "Setup Gemini Nano",
+    "alert": {
+      "title": "Gemini Nano API Não Disponível",
+      "description": "Parece que a API Gemini Nano não está disponível no seu navegador. Esta é uma tecnologia experimental que requer configuração específica.",
+      "benefits": "Execute IA diretamente no navegador, garantindo privacidade e respostas rápidas."
+    },
+    "requirements": {
+      "title": "Requisitos do Sistema",
+      "browser": "Chrome Canary (version 131+) ou Chrome Dev",
+      "gpu": "GPU dedicada com 4+ GB VRAM (recomendado) ou CPU moderna",
+      "os": "Windows 10/11, macOS 13+, ou Linux",
+      "storage": "Pelo menos 22 GB disponíveis",
+      "connection": "Conexão com internet ilimitada (para download inicial)"
+    },
+    "steps": {
+      "step1": {
+        "title": "Baixe Chrome Canary ou Dev",
+        "description": "O Gemini Nano está disponível apenas em versões experimentais do Chrome:",
+        "downloadCanary": "Download Chrome Canary",
+        "downloadDev": "Download Chrome Dev"
+      },
+      "step2": {
+        "title": "Habilite Flags Experimentais",
+        "chromeFlags": "Abra o Chrome e navegue para a página de flags:",
+        "enableApi": "Habilite a API Gemini Nano:",
+        "enableBypass": "Habilite o download do modelo:",
+        "restart": "Reinicie o Chrome após habilitar os flags"
+      },
+      "step3": {
+        "title": "Processamento via CPU (Opcional)",
+        "description": "Não tem uma GPU dedicada com 4+ GB VRAM? Habilite o processamento via CPU com este flag adicional:",
+        "searchFlag": "Busque por esse flag e defina como \"Enabled\"",
+        "performance": "O desempenho pode ser mais lento, mas ainda funcional"
+      },
+      "step4": {
+        "title": "Verificação da Instalação",
+        "devtools": "Abra o DevTools (F12) e execute este comando no console:",
+        "shouldReturn": "Isso deve retornar \"available\" se tudo estiver funcionando corretamente.",
+        "checkDownload": "Verifique o status de download do modelo em:",
+        "lookFor": "Procure pelo componente \"Optimization Guide On Device Model\"."
+      },
+      "troubleshooting": {
+        "title": "Solução de Problemas",
+        "apiNotFound": "API não encontrada: Certifique-se de estar usando Chrome Canary/Dev e ter habilitado os flags",
+        "modelUnavailable": "Modelo indisponível: Verifique os requisitos de hardware ou habilite o bypass de CPU",
+        "downloadProblems": "Problemas de download: Garanta que você tenha espaço suficiente e uma conexão ilimitada",
+        "stillNotWorking": "Ainda não funciona: Tente reiniciar o Chrome e verificar chrome://components"
+      },
+      "footer": {
+        "documentation": "Para informações mais detalhadas, visite a",
+        "documentationLink": "documentação oficial de IA do Chrome",
+        "understood": "Entendi! Vamos começar",
+        "tryAgain": "Tentar Novamente"
+      }
+    }
+  },
+  "footer": {
+    "description": "Gemini Nano - Modelo de linguagem executado diretamente no navegador"
+  },
+  "language": {
+    "selector": "Idioma"
+  }
+}

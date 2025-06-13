@@ -1,0 +1,118 @@
+{
+  "header": {
+    "title": "Gemini Nano Playground",
+    "subtitle": "Test the Prompt API directly in your browser."
+  },
+  "controls": {
+    "title": "Control Panel",
+    "temperature": {
+      "label": "Temperature:",
+      "description": "Higher values = more creative. Set before starting."
+    },
+    "topK": {
+      "label": "Top-K:",
+      "description": "Changes the set of tokens considered. Set before starting."
+    },
+    "buttons": {
+      "start": "Start Session",
+      "restart": "Restart Session with New Parameters"
+    },
+    "download": {
+      "progress": "{{progress}}% completed"
+    }
+  },
+  "status": {
+    "idle": "Waiting for initialization",
+    "initializing": "Initializing...",
+    "downloading": "Downloading model. This may take a few minutes.",
+    "ready": "Ready to use",
+    "initialMessage": "Click \"Start\" to check model availability.",
+    "checkingAvailability": "Checking model availability...",
+    "modelUnavailable": "Model unavailable. Check hardware and system requirements.",
+    "creatingSession": "Model available. Creating session...",
+    "downloadProgress": "Downloading model: {{progress}}%",
+    "sessionReady": "Session ready with Temperature={{temperature}} and Top-K={{topK}}.",
+    "unknownError": "Unknown error",
+    "error": "Error: {{message}}",
+    "apiNotFound": "LanguageModel API not found. Make sure you're in Chrome with the correct flags."
+  },
+  "prompt": {
+    "placeholder": "Type your question or prompt here...",
+    "send": "Send",
+    "stop": "Stop",
+    "generating": "Generating response...",
+    "empty": "The response will appear here..."
+  },
+  "output": {
+    "error": "Error: {{message}}",
+    "interrupted": "Generation interrupted"
+  },
+  "errors": {
+    "modelParamsLoad": "Could not load model parameters:",
+    "apiAvailabilityCheck": "Error checking API availability:"
+  },
+  "setupModal": {
+    "title": "Setup Gemini Nano",
+    "alert": {
+      "title": "Gemini Nano API Not Available",
+      "description": "It seems the Gemini Nano API is not available in your browser. This is an experimental technology that requires specific configuration.",
+      "benefits": "Run AI directly in the browser, ensuring privacy and fast responses."
+    },
+    "requirements": {
+      "title": "System Requirements",
+      "browser": "Chrome Canary (version 131+) or Chrome Dev",
+      "gpu": "Dedicated GPU with 4+ GB VRAM (recommended) or modern CPU",
+      "os": "Windows 10/11, macOS 13+, or Linux",
+      "storage": "At least 22 GB available",
+      "connection": "Unlimited internet connection (for initial download)"
+    },
+    "steps": {
+      "step1": {
+        "title": "Download Chrome Canary or Dev",
+        "description": "Gemini Nano is only available in experimental Chrome versions:",
+        "downloadCanary": "Download Chrome Canary",
+        "downloadDev": "Download Chrome Dev"
+      },
+      "step2": {
+        "title": "Enable Experimental Flags",
+        "chromeFlags": "Open Chrome and navigate to the flags page:",
+        "enableApi": "Enable Gemini Nano API:",
+        "enableBypass": "Enable model download:",
+        "restart": "Restart Chrome after enabling the flags"
+      },
+      "step3": {
+        "title": "CPU Processing (Optional)",
+        "description": "Don't have a dedicated GPU with 4+ GB VRAM? Enable CPU processing with this additional flag:",
+        "searchFlag": "Search for this flag and set it to \"Enabled\"",
+        "ignoreGpu": "This ignores GPU requirements and uses CPU",
+        "performance": "Performance may be slower, but still functional"
+      },
+      "step4": {
+        "title": "Installation Verification",
+        "devtools": "Open DevTools (F12) and execute this command in the console:",
+        "shouldReturn": "This should return \"available\" if everything is working correctly.",
+        "checkDownload": "Check the model download status at:",
+        "lookFor": "Look for the \"Optimization Guide On Device Model\" component."
+      },
+      "troubleshooting": {
+        "title": "Troubleshooting",
+        "apiNotFound": "API not found: Make sure you're using Chrome Canary/Dev and have enabled the flags",
+        "modelUnavailable": "Model unavailable: Check hardware requirements or enable CPU bypass",
+        "downloadProblems": "Download problems: Ensure you have enough space and an unlimited connection",
+        "stillNotWorking": "Still not working: Try restarting Chrome and checking chrome://components"
+      },
+      "footer": {
+        "documentation": "For more detailed information, visit the",
+        "documentationLink": "official Chrome AI documentation",
+        "understood": "Got it! Let's start",
+        "tryAgain": "Try Again"
+      }
+    }
+  },
+  "footer": {
+    "description": "Gemini Nano - Language model running directly in the browser"
+  },
+  "language": {
+    "selector": "Language"
+  }
+}

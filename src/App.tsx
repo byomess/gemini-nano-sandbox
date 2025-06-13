@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
+    LanguageSelector,
     ModelControls,
     OutputDisplay,
     PromptInterface,
@@ -11,6 +13,8 @@ import { useGeminiNano } from './hooks/useGeminiNano';
 
 // --- Componente Principal da Aplicação ---
 export default function App() {
+    const { t } = useTranslation();
+    
     // Hook customizado com toda a lógica do Gemini Nano
     const {
         status,
@@ -73,14 +77,19 @@ export default function App() {
     // --- Renderização do Componente ---
     return (
         <div className="bg-slate-900 text-slate-200 min-h-screen font-sans flex flex-col">
+            {/* Seletor de Idioma - Fixo na borda superior direita */}
+            <div className="fixed top-4 right-4 z-50">
+                <LanguageSelector />
+            </div>
+
             <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 lg:py-12 flex-grow">
 
                 {/* Cabeçalho */}
                 <header className="text-center mb-6 md:mb-10">
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-2">
-                        Gemini Nano Playground
+                        {t('header.title')}
                     </h1>
-                    <p className="text-slate-400 text-sm sm:text-base">Teste a API Prompt diretamente no seu navegador.</p>
+                    <p className="text-slate-400 text-sm sm:text-base">{t('header.subtitle')}</p>
                 </header>
 
                 <main className="flex flex-col gap-4 md:gap-6 flex-grow">
@@ -88,7 +97,7 @@ export default function App() {
                     <div className="bg-slate-800/50 p-4 sm:p-6 rounded-xl border border-slate-700 shadow-lg">
                         <h2 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4 flex items-center gap-2 sm:gap-3">
                             <IconSparkles className="text-purple-400 w-4 h-4 sm:w-5 sm:h-5" />
-                            Painel de Controle
+                            {t('controls.title')}
                         </h2>
 
                         {/* Status */}
@@ -123,7 +132,7 @@ export default function App() {
 
                 {/* Rodapé */}
                 <footer className="mt-8 text-center text-xs text-slate-500">
-                    <p>Gemini Nano - Modelo de linguagem executado diretamente no navegador</p>
+                    <p>{t('footer.description')}</p>
                 </footer>
             </div>
 

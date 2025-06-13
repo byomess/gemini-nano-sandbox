@@ -10,6 +10,7 @@ import {
     ExternalLink,
     HardDrive,
     Info,
+    Languages,
     Link,
     Loader2,
     Monitor,
@@ -61,6 +62,7 @@ export const IconWifi = Wifi;
 export const IconLink = Link;
 export const IconTarget = Target;
 export const IconRotate = RotateCcw;
+export const IconLanguages = Languages;
 export const IconX = ({ className, ...props }: React.ComponentProps<'svg'>) => (
     <XCircle className={className} {...props} />
 );
