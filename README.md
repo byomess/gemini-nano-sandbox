@@ -6,7 +6,7 @@
 
 This playground provides a user-friendly interface to interact with the Gemini Nano Prompt API, allowing you to experiment with its capabilities without sending your data to external servers. Enjoy enhanced privacy and rapid responses, all running locally.
 
-**[Live Demo](https://byomess.github.io/gemini-nano-playground/)** 🌐
+**[Live Demo](https://gemini-nano-sandbox.vercel.app/)** 🌐
 
 *(Note: The live demo requires a compatible Chrome version and specific flags enabled. See [Setup for Gemini Nano](#setup-for-gemini-nano) below.)*
 
