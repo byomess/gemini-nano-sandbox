@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/byomess/gemini-nano-playground/issues"
   },
-  "homepage": "https://byomess.github.io/gemini-nano-playground/",
+  "homepage": "https://gemini-nano-sandbox.vercel.app/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
