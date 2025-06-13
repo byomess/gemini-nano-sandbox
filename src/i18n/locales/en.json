@@ -53,23 +53,31 @@
   },
   "setupModal": {
     "title": "Setup Gemini Nano",
+    "copyToClipboard": "Copy to clipboard",
+    "closeModalLabel": "Close modal",
     "alert": {
       "title": "Gemini Nano API Not Available",
-      "description": "It seems the Gemini Nano API is not available in your browser. This is an experimental technology that requires specific configuration.",
-      "benefits": "Run AI directly in the browser, ensuring privacy and fast responses."
+      "description": "It seems the Gemini Nano API is not available in your browser. This may be because you are not using Chrome Canary/Dev, experimental flags are not enabled, or your system does not meet the requirements."
+    },
+    "introduction": {
+      "title": "What is Gemini Nano?",
+      "description": "Gemini Nano is Google's on-device AI model that runs locally in Chrome. It enables powerful AI features without sending data to external servers, ensuring privacy and fast responses."
     },
     "requirements": {
       "title": "System Requirements",
-      "browser": "Chrome Canary (version 131+) or Chrome Dev",
-      "gpu": "Dedicated GPU with 4+ GB VRAM (recommended) or modern CPU",
-      "os": "Windows 10/11, macOS 13+, or Linux",
-      "storage": "At least 22 GB available",
-      "connection": "Unlimited internet connection (for initial download)"
+      "osLabel": "Operating System:",
+      "osValue": "Windows 10/11, macOS 13+, or Linux",
+      "storageLabel": "Storage:",
+      "storageValue": "At least 22 GB available",
+      "gpuLabel": "GPU:",
+      "gpuValue": "Over 4 GB VRAM (or use CPU bypass - see below)",
+      "networkLabel": "Network:",
+      "networkValue": "Unmetered/unlimited connection for download"
     },
     "steps": {
       "step1": {
-        "title": "Download Chrome Canary or Dev",
-        "description": "Gemini Nano is only available in experimental Chrome versions:",
+        "title": "Get Chrome Canary or Dev Channel",
+        "description": "You need Chrome Canary or Dev channel to access experimental AI features:",
         "downloadCanary": "Download Chrome Canary",
         "downloadDev": "Download Chrome Dev"
       },
@@ -77,8 +85,9 @@
         "title": "Enable Experimental Flags",
         "chromeFlags": "Open Chrome and navigate to the flags page:",
         "enableApi": "Enable Gemini Nano API:",
-        "enableBypass": "Enable model download:",
-        "restart": "Restart Chrome after enabling the flags"
+        "setFlagToEnabled": "Change from \"Default\" to \"Enabled\"",
+        "restart": "Restart Chrome:",
+        "relaunchDescription": "Click the \"Relaunch\" button that appears at the bottom of the page."
       },
       "step3": {
         "title": "CPU Processing (Optional)",
@@ -93,20 +102,20 @@
         "shouldReturn": "This should return \"available\" if everything is working correctly.",
         "checkDownload": "Check the model download status at:",
         "lookFor": "Look for the \"Optimization Guide On Device Model\" component."
-      },
-      "troubleshooting": {
-        "title": "Troubleshooting",
-        "apiNotFound": "API not found: Make sure you're using Chrome Canary/Dev and have enabled the flags",
-        "modelUnavailable": "Model unavailable: Check hardware requirements or enable CPU bypass",
-        "downloadProblems": "Download problems: Ensure you have enough space and an unlimited connection",
-        "stillNotWorking": "Still not working: Try restarting Chrome and checking chrome://components"
-      },
-      "footer": {
-        "documentation": "For more detailed information, visit the",
-        "documentationLink": "official Chrome AI documentation",
-        "understood": "Got it! Let's start",
-        "tryAgain": "Try Again"
       }
+    },
+    "troubleshooting": {
+      "title": "Troubleshooting",
+      "apiNotFound": "API not found: Ensure you are using Chrome Canary/Dev and have enabled the flags.",
+      "modelUnavailable": "Model unavailable: Check hardware requirements or enable CPU bypass.",
+      "downloadProblems": "Download problems: Ensure you have enough space and an unmetered connection.",
+      "stillNotWorking": "Still not working: Try restarting Chrome and checking chrome://components."
+    },
+    "footer": {
+      "documentation": "For more detailed information, visit the",
+      "documentationLink": "official Chrome AI documentation",
+      "understood": "Got it! Let's start",
+      "tryAgain": "Try Again"
     }
   },
   "footer": {

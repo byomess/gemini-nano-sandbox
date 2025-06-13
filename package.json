@@ -1,8 +1,30 @@
 {
-  "name": "gemini-nano",
-  "private": true,
-  "version": "0.0.0",
+  "name": "gemini-nano-playground",
+  "version": "0.1.0",
+  "description": "A playground for experimenting with Google's Gemini Nano on-device AI model directly in your browser.",
   "type": "module",
+  "author": "Felipe Chierice <felipe.chierice@hotmail.com> (https://byomess.github.io/docs/portfolio.html)",
+  "license": "MIT",
+  "keywords": [
+    "gemini",
+    "nano",
+    "ai",
+    "on-device",
+    "google",
+    "react",
+    "typescript",
+    "playground",
+    "llm",
+    "large language model"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byomess/gemini-nano-playground.git"
+  },
+  "bugs": {
+    "url": "https://github.com/byomess/gemini-nano-playground/issues"
+  },
+  "homepage": "https://byomess.github.io/gemini-nano-playground/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

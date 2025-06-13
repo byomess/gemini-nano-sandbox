@@ -53,22 +53,30 @@
   },
   "setupModal": {
     "title": "Gemini Nano Einrichten",
+    "copyToClipboard": "In die Zwischenablage kopieren",
+    "closeModalLabel": "Modal schließen",
     "alert": {
       "title": "Gemini Nano API Nicht Verfügbar",
-      "description": "Es scheint, dass die Gemini Nano API in Ihrem Browser nicht verfügbar ist. Dies ist eine experimentelle Technologie, die eine spezifische Konfiguration erfordert.",
-      "benefits": "Führen Sie KI direkt im Browser aus und gewährleisten Sie Datenschutz und schnelle Antworten."
+      "description": "Es scheint, dass die Gemini Nano API in Ihrem Browser nicht verfügbar ist. Dies kann daran liegen, dass Sie Chrome Canary/Dev nicht verwenden, experimentelle Flags nicht aktiviert sind oder Ihr System die Anforderungen nicht erfüllt."
+    },
+    "introduction": {
+      "title": "Was ist Gemini Nano?",
+      "description": "Gemini Nano ist Googles On-Device-KI-Modell, das lokal in Chrome ausgeführt wird. Es ermöglicht leistungsstarke KI-Funktionen, ohne Daten an externe Server zu senden, was Datenschutz und schnelle Antworten gewährleistet."
     },
     "requirements": {
       "title": "Systemanforderungen",
-      "browser": "Chrome Canary (Version 131+) oder Chrome Dev",
-      "gpu": "Dedizierte GPU mit 4+ GB VRAM (empfohlen) oder moderne CPU",
-      "os": "Windows 10/11, macOS 13+, oder Linux",
-      "storage": "Mindestens 22 GB verfügbar",
-      "connection": "Unbegrenzte Internetverbindung (für ersten Download)"
+      "osLabel": "Betriebssystem:",
+      "osValue": "Windows 10/11, macOS 13+, oder Linux",
+      "storageLabel": "Speicherplatz:",
+      "storageValue": "Mindestens 22 GB verfügbar",
+      "gpuLabel": "GPU:",
+      "gpuValue": "Über 4 GB VRAM (oder CPU-Bypass verwenden - siehe unten)",
+      "networkLabel": "Netzwerk:",
+      "networkValue": "Unbegrenzte Verbindung (für den Download)"
     },
     "steps": {
       "step1": {
-        "title": "Chrome Canary oder Dev Herunterladen",
+        "title": "Chrome Canary oder Dev Channel herunterladen",
         "description": "Gemini Nano ist nur in experimentellen Chrome-Versionen verfügbar:",
         "downloadCanary": "Chrome Canary Herunterladen",
         "downloadDev": "Chrome Dev Herunterladen"
@@ -77,8 +85,9 @@
         "title": "Experimentelle Flags Aktivieren",
         "chromeFlags": "Öffnen Sie Chrome und navigieren Sie zur Flags-Seite:",
         "enableApi": "Gemini Nano API aktivieren:",
-        "enableBypass": "Modell-Download aktivieren:",
-        "restart": "Chrome nach Aktivierung der Flags neu starten"
+        "setFlagToEnabled": "Von \"Standard\" auf \"Aktiviert\" ändern",
+        "restart": "Chrome neu starten:",
+        "relaunchDescription": "Klicken Sie auf die Schaltfläche \"Neu starten\", die am unteren Rand der Seite erscheint."
       },
       "step3": {
         "title": "CPU-Verarbeitung (Optional)",
@@ -93,20 +102,20 @@
         "shouldReturn": "Dies sollte \"available\" zurückgeben, wenn alles korrekt funktioniert.",
         "checkDownload": "Überprüfen Sie den Modell-Download-Status unter:",
         "lookFor": "Suchen Sie nach der Komponente \"Optimization Guide On Device Model\"."
-      },
-      "troubleshooting": {
-        "title": "Fehlerbehebung",
-        "apiNotFound": "API nicht gefunden: Stellen Sie sicher, dass Sie Chrome Canary/Dev verwenden und die Flags aktiviert haben",
-        "modelUnavailable": "Modell nicht verfügbar: Überprüfen Sie die Hardware-Anforderungen oder aktivieren Sie den CPU-Bypass",
-        "downloadProblems": "Download-Probleme: Stellen Sie sicher, dass Sie genügend Speicherplatz und eine unbegrenzte Verbindung haben",
-        "stillNotWorking": "Funktioniert immer noch nicht: Versuchen Sie Chrome neu zu starten und chrome://components zu überprüfen"
-      },
-      "footer": {
-        "documentation": "Für detailliertere Informationen besuchen Sie die",
-        "documentationLink": "offizielle Chrome AI Dokumentation",
-        "understood": "Verstanden! Lassen Sie uns anfangen",
-        "tryAgain": "Erneut Versuchen"
       }
+    },
+    "troubleshooting": {
+      "title": "Fehlerbehebung",
+      "apiNotFound": "API nicht gefunden: Stellen Sie sicher, dass Sie Chrome Canary/Dev verwenden und die Flags aktiviert haben",
+      "modelUnavailable": "Modell nicht verfügbar: Überprüfen Sie die Hardware-Anforderungen oder aktivieren Sie den CPU-Bypass",
+      "downloadProblems": "Download-Probleme: Stellen Sie sicher, dass Sie genügend Speicherplatz und eine unbegrenzte Verbindung haben",
+      "stillNotWorking": "Funktioniert immer noch nicht: Versuchen Sie Chrome neu zu starten und chrome://components zu überprüfen"
+    },
+    "footer": {
+      "documentation": "Für detailliertere Informationen besuchen Sie die",
+      "documentationLink": "offizielle Chrome AI Dokumentation",
+      "understood": "Verstanden! Lassen Sie uns anfangen",
+      "tryAgain": "Erneut Versuchen"
     }
   },
   "footer": {

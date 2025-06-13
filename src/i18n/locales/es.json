@@ -53,22 +53,30 @@
   },
   "setupModal": {
     "title": "Configurar Gemini Nano",
+    "copyToClipboard": "Copiar al portapapeles",
+    "closeModalLabel": "Cerrar modal",
     "alert": {
       "title": "API de Gemini Nano No Disponible",
-      "description": "Parece que la API de Gemini Nano no está disponible en tu navegador. Esta es una tecnología experimental que requiere configuración específica.",
-      "benefits": "Ejecuta IA directamente en el navegador, garantizando privacidad y respuestas rápidas."
+      "description": "Parece que la API de Gemini Nano no está disponible en tu navegador. Esto puede deberse a que no estás usando Chrome Canary/Dev, las flags experimentales no están habilitadas o tu sistema no cumple con los requisitos."
+    },
+    "introduction": {
+      "title": "¿Qué es Gemini Nano?",
+      "description": "Gemini Nano es el modelo de IA en el dispositivo de Google que se ejecuta localmente en Chrome. Permite potentes funciones de IA sin enviar datos a servidores externos, garantizando privacidad y respuestas rápidas."
     },
     "requirements": {
       "title": "Requisitos del Sistema",
-      "browser": "Chrome Canary (versión 131+) o Chrome Dev",
-      "gpu": "GPU dedicada con 4+ GB VRAM (recomendado) o CPU moderna",
-      "os": "Windows 10/11, macOS 13+, o Linux",
-      "storage": "Al menos 22 GB disponibles",
-      "connection": "Conexión a internet ilimitada (para descarga inicial)"
+      "osLabel": "Sistema Operativo:",
+      "osValue": "Windows 10/11, macOS 13+, o Linux",
+      "storageLabel": "Almacenamiento:",
+      "storageValue": "Al menos 22 GB disponibles",
+      "gpuLabel": "GPU:",
+      "gpuValue": "Más de 4 GB VRAM (o usa bypass de CPU - ver abajo)",
+      "networkLabel": "Red:",
+      "networkValue": "Conexión ilimitada (para descarga)"
     },
     "steps": {
       "step1": {
-        "title": "Descargar Chrome Canary o Dev",
+        "title": "Obtén Chrome Canary o Dev Channel",
         "description": "Gemini Nano solo está disponible en versiones experimentales de Chrome:",
         "downloadCanary": "Descargar Chrome Canary",
         "downloadDev": "Descargar Chrome Dev"
@@ -77,8 +85,9 @@
         "title": "Habilitar Flags Experimentales",
         "chromeFlags": "Abre Chrome y navega a la página de flags:",
         "enableApi": "Habilita la API de Gemini Nano:",
-        "enableBypass": "Habilita la descarga del modelo:",
-        "restart": "Reinicia Chrome después de habilitar los flags"
+        "setFlagToEnabled": "Cambia de \"Predeterminado\" a \"Habilitado\"",
+        "restart": "Reinicia Chrome:",
+        "relaunchDescription": "Haz clic en el botón \"Reiniciar\" que aparece en la parte inferior de la página."
       },
       "step3": {
         "title": "Procesamiento por CPU (Opcional)",
@@ -93,20 +102,20 @@
         "shouldReturn": "Esto debería devolver \"available\" si todo está funcionando correctamente.",
         "checkDownload": "Verifica el estado de descarga del modelo en:",
         "lookFor": "Busca el componente \"Optimization Guide On Device Model\"."
-      },
-      "troubleshooting": {
-        "title": "Solución de Problemas",
-        "apiNotFound": "API no encontrada: Asegúrate de estar usando Chrome Canary/Dev y haber habilitado los flags",
-        "modelUnavailable": "Modelo no disponible: Verifica los requisitos de hardware o habilita el bypass de CPU",
-        "downloadProblems": "Problemas de descarga: Asegúrate de tener suficiente espacio y una conexión ilimitada",
-        "stillNotWorking": "Aún no funciona: Intenta reiniciar Chrome y verificar chrome://components"
-      },
-      "footer": {
-        "documentation": "Para información más detallada, visita la",
-        "documentationLink": "documentación oficial de IA de Chrome",
-        "understood": "¡Entendido! Vamos a empezar",
-        "tryAgain": "Intentar de Nuevo"
       }
+    },
+    "troubleshooting": {
+      "title": "Solución de Problemas",
+      "apiNotFound": "API no encontrada: Asegúrate de estar usando Chrome Canary/Dev y haber habilitado los flags",
+      "modelUnavailable": "Modelo no disponible: Verifica los requisitos de hardware o habilita el bypass de CPU",
+      "downloadProblems": "Problemas de descarga: Asegúrate de tener suficiente espacio y una conexión ilimitada",
+      "stillNotWorking": "Aún no funciona: Intenta reiniciar Chrome y verificar chrome://components"
+    },
+    "footer": {
+      "documentation": "Para información más detallada, visita la",
+      "documentationLink": "documentación oficial de IA de Chrome",
+      "understood": "¡Entendido! Vamos a empezar",
+      "tryAgain": "Intentar de Nuevo"
     }
   },
   "footer": {
