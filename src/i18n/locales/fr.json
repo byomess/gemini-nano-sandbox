@@ -67,6 +67,10 @@
     "footer": {
       "showGuideLink": "Afficher le Guide Gemini Nano",
       "hideGuideLink": "Masquer le Guide Gemini Nano"
+    },
+    "tabs": {
+      "chat": "Chat",
+      "guide": "Guide Développeur"
     }
   },
   "prompt": {

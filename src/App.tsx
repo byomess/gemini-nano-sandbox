@@ -78,11 +78,6 @@ export default function App() {
         handleSendPrompt(prompt, true);
     };
 
-    // Função para alternar a visibilidade do guia
-    const toggleGuideVisibility = () => {
-        setShowGuide(!showGuide);
-    };
-
     // --- Renderização do Componente ---
     return (
         <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-200 min-h-screen font-sans flex flex-col relative overflow-hidden">
@@ -208,7 +203,7 @@ export default function App() {
                                 >
                                     <div className="flex items-center justify-center gap-2">
                                         <MessageSquare className="w-5 h-5" />
-                                        <span>Chat Interface</span>
+                                        <span>{t('app.tabs.chat')}</span>
                                     </div>
                                 </button>
                                 <button
@@ -221,7 +216,7 @@ export default function App() {
                                 >
                                     <div className="flex items-center justify-center gap-2">
                                         <BookOpen className="w-5 h-5" />
-                                        <span>Developer Guide</span>
+                                        <span>{t('app.tabs.guide')}</span>
                                     </div>
                                 </button>
                             </div>

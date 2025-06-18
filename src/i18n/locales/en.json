@@ -247,5 +247,9 @@
       "codeBlock1": "async function performAiTask() {\n  try {\n    // Example: Check availability\n    if (!window.LanguageModel || await window.LanguageModel.availability() === 'unavailable') {\n      throw new Error('AI Model is not available.');\n    }\n\n    // Example: Create session\n    const session = await window.LanguageModel.create({ /* params */ });\n    if (!session) {\n      throw new Error('Failed to create AI session.');\n    }\n\n    // Example: Send prompt\n    const response = await session.prompt(\"Your prompt here\");\n    // Process response\n\n  } catch (error) {\n    console.error(\"An error occurred:\", error.message);\n    // Update UI to inform the user (e.g., display error.message)\n  }\n}\n// performAiTask();",
       "paragraph3": "Inspect the error object for details. The API might throw specific error types or provide error codes in the future, which can help in diagnosing issues."
     }
+  },
+  "tabs": {
+    "chat": "Chat",
+    "guide": "Developer Guide"
   }
 }
