@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MessageSquare, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
     ControlPanelHeader,
     LanguageSelector,
@@ -38,6 +39,7 @@ export default function App() {
     const [prompt, setPrompt] = useState('');
     const [showSetupModal, setShowSetupModal] = useState(false);
     const [showGuide, setShowGuide] = useState(false);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
     // Efeito para mostrar o modal quando a API não estiver disponível ou houver erro específico
     useEffect(() => {
@@ -131,35 +133,100 @@ export default function App() {
                     </div>
                 </header>
 
-                <main className="flex flex-col lg:flex-row gap-6 md:gap-8 flex-grow">
-                    {/* Painel de Controle e Status - Sidebar no desktop */}
-                    <div className="lg:w-80 xl:w-96 space-y-6">
-                        <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-700/50 shadow-2xl relative overflow-hidden">
-                            {/* Efeito de brilho */}
-                            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
-                            
-                            {/* Header do Painel de Controle */}
-                            <ControlPanelHeader />
-                            
-                            {/* Status */}
-                            <StatusDisplay status={status} statusMessage={statusMessage} />
+                <main className="flex flex-col lg:flex-row gap-6 md:gap-8 flex-grow relative">
+                    {/* Container wrapper para manter posição do botão flutuante */}
+                    <div className="relative">
+                        {/* Painel de Controle e Status - Sidebar no desktop */}
+                        <div 
+                            className={`lg:w-80 xl:w-96 space-y-6 transition-all duration-300 ease-in-out ${
+                                isSidebarCollapsed 
+                                    ? 'lg:opacity-0 lg:scale-95 lg:translate-x-[-20px] lg:pointer-events-none lg:absolute' 
+                                    : 'lg:opacity-100 lg:scale-100 lg:translate-x-0'
+                            }`}
+                        >
+                            <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-700/50 shadow-2xl relative overflow-hidden">
+                                {/* Efeito de brilho */}
+                                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+                                
+                                {/* Botão de colapsar - apenas no desktop */}
+                                <button
+                                    onClick={() => setIsSidebarCollapsed(true)}
+                                    className="hidden lg:flex absolute top-4 right-4 w-8 h-8 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg items-center justify-center transition-colors duration-200 z-10"
+                                    title="Recolher painel"
+                                >
+                                    <ChevronLeft className="w-4 h-4 text-slate-400" />
+                                </button>
 
-                            {/* Controles do Modelo */}
-                            <ModelControls
-                                status={status}
-                                modelParams={modelParams}
-                                temperature={temperature}
-                                topK={topK}
-                                downloadProgress={downloadProgress}
-                                onTemperatureChange={setTemperature}
-                                onTopKChange={setTopK}
-                                onInitialize={handleInitialize}
-                            />
+                                {/* Header do Painel de Controle */}
+                                <ControlPanelHeader />
+                                
+                                {/* Status */}
+                                <StatusDisplay status={status} statusMessage={statusMessage} />
+
+                                {/* Controles do Modelo */}
+                                <ModelControls
+                                    status={status}
+                                    modelParams={modelParams}
+                                    temperature={temperature}
+                                    topK={topK}
+                                    downloadProgress={downloadProgress}
+                                    onTemperatureChange={setTemperature}
+                                    onTopKChange={setTopK}
+                                    onInitialize={handleInitialize}
+                                />
+                            </div>
                         </div>
                     </div>
 
                     {/* Área Principal - Chat Interface OU Guia */}
-                    <div className="flex-1 flex flex-col min-h-0">
+                    <div className={`flex-1 flex flex-col min-h-0 transition-all duration-300 ease-in-out ${
+                        isSidebarCollapsed ? 'lg:ml-0' : ''
+                    }`}>
+                        {/* Tab Navigation */}
+                        <div className="mb-6 relative">
+                            {/* Botão flutuante para expandir quando colapsado - agora alinhado com as tabs */}
+                            <button
+                                onClick={() => setIsSidebarCollapsed(false)}
+                                className={`hidden lg:flex absolute -left-14 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg items-center justify-center shadow-lg transition-all duration-300 z-30 ${
+                                    isSidebarCollapsed 
+                                        ? 'opacity-100 scale-100 translate-x-0' 
+                                        : 'opacity-0 scale-75 translate-x-[-20px] pointer-events-none'
+                                }`}
+                                title="Expandir painel de controle"
+                            >
+                                <ChevronRight className="w-4 h-4 text-slate-400" />
+                            </button>
+
+                            <div className="flex bg-slate-800/50 backdrop-blur-sm rounded-xl p-1 border border-slate-700/50">
+                                <button
+                                    onClick={() => setShowGuide(false)}
+                                    className={`flex-1 px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+                                        !showGuide
+                                            ? 'bg-gradient-to-r from-purple-500 to-cyan-500 text-white shadow-lg'
+                                            : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                                    }`}
+                                >
+                                    <div className="flex items-center justify-center gap-2">
+                                        <MessageSquare className="w-5 h-5" />
+                                        <span>Chat Interface</span>
+                                    </div>
+                                </button>
+                                <button
+                                    onClick={() => setShowGuide(true)}
+                                    className={`flex-1 px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+                                        showGuide
+                                            ? 'bg-gradient-to-r from-purple-500 to-cyan-500 text-white shadow-lg'
+                                            : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                                    }`}
+                                >
+                                    <div className="flex items-center justify-center gap-2">
+                                        <BookOpen className="w-5 h-5" />
+                                        <span>Developer Guide</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
                         {showGuide ? (
                             <GeminiNanoGuide />
                         ) : (
@@ -207,17 +274,11 @@ export default function App() {
                 <footer className="mt-12 text-center text-sm text-slate-500 relative">
                     <div className="max-w-2xl mx-auto">
                         <p className="mb-2">{t('footer.description')}</p>
-                        <div className="flex items-center justify-center gap-4 text-xs mb-2">
+                        <div className="flex items-center justify-center gap-4 text-xs">
                             <span>Powered by Gemini Nano</span>
                             <span>•</span>
                             <span>Built with React + TypeScript</span>
                         </div>
-                        <button
-                            onClick={toggleGuideVisibility}
-                            className="text-purple-400 hover:text-purple-300 transition-colors duration-200 text-xs"
-                        >
-                            {t(showGuide ? 'app.footer.hideGuideLink' : 'app.footer.showGuideLink')}
-                        </button>
                     </div>
                 </footer>
             </div>
