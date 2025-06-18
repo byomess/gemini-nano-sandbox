@@ -63,7 +63,11 @@
     "initializingTitle": "Initialisation...",
     "setupDescription": "Cliquez sur \"Démarrer\" dans le panneau latéral pour commencer.",
     "downloadingDescription": "Le modèle est en cours de téléchargement en arrière-plan.",
-    "initializingDescription": "Préparation de l'IA pour utilisation."
+    "initializingDescription": "Préparation de l'IA pour utilisation.",
+    "footer": {
+      "showGuideLink": "Afficher le Guide Gemini Nano",
+      "hideGuideLink": "Masquer le Guide Gemini Nano"
+    }
   },
   "prompt": {
     "placeholder": "Tapez votre question ou prompt ici...",
@@ -164,5 +168,84 @@
   },
   "language": {
     "selector": "Langue"
+  },
+  "guide": {
+    "title": "Guide Gemini Nano",
+    "section1": {
+      "title": "Introduction",
+      "paragraph1": "Ce guide vous aide à démarrer avec l'API Gemini Nano intégrée dans ce playground."
+    },
+    "section2": {
+      "title": "Qu'est-ce que Gemini Nano ?",
+      "paragraph1": "Gemini Nano est le modèle le plus efficace de Google, conçu pour les tâches sur appareil. Il s'exécute directement sur les appareils des utilisateurs, tirant parti de l'accélération matérielle pour des fonctionnalités d'IA rapides et capables de fonctionner hors ligne.",
+      "paragraph2": "Cette version de Gemini Nano est intégrée à Chrome et est accessible via l'API `window.ai`, permettant aux développeurs web d'intégrer des capacités d'IA générative dans leurs applications web."
+    },
+    "section3": {
+      "title": "Fonctionnalités Clés",
+      "listItem1": "Traitement sur l'Appareil : Garantit la confidentialité de l'utilisateur et active les fonctionnalités hors ligne en s'exécutant directement dans le navigateur.",
+      "listItem2": "Génération de Texte : Capable de générer du texte cohérent et contextuellement pertinent basé sur des prompts.",
+      "listItem3": "Efficacité : Optimisé pour les environnements aux ressources limitées, offrant un équilibre entre performance et taille du modèle.",
+      "listItem4": "Intégration à la Plateforme Web : Accessible via l'API `window.ai` dans Chrome, ce qui facilite son utilisation par les développeurs web."
+    },
+    "section4": {
+      "title": "Comment Utiliser ce Playground",
+      "paragraph1": "Ce playground offre un moyen interactif de tester les capacités de Gemini Nano :",
+      "listItem1": "Panneau de Contrôle : Ajustez les paramètres du modèle comme la Température et le Top-K pour voir comment ils affectent le résultat. Initialisez ou redémarrez le modèle si nécessaire.",
+      "listItem2": "Interface de Prompt : Tapez vos questions ou instructions dans la zone de texte et cliquez sur 'Envoyer'. Vous pouvez également essayer les suggestions de prompts fournies.",
+      "listItem3": "Affichage du Résultat : Visualisez la réponse générée par le modèle. Notez que la génération peut être arrêtée à l'aide du bouton 'Arrêter'.",
+      "paragraph2": "Expérimentez avec différents prompts et paramètres pour comprendre le comportement du modèle."
+    },
+    "section5": {
+      "title": "Considérations Importantes",
+      "paragraph1": "Bien que Gemini Nano soit puissant, gardez ces points à l'esprit :",
+      "listItem1": "Technologie Expérimentale : Il s'agit d'une fonctionnalité expérimentale. L'API et les capacités du modèle peuvent changer.",
+      "listItem2": "Compatibilité du Navigateur : Actuellement, il est principalement disponible dans les versions de Chrome qui prennent en charge le SDK d'IA intégré (par ex., Chrome Canary/Dev avec des flags spécifiques activés).",
+      "listItem3": "Performance : Les performances peuvent varier en fonction de votre matériel. Le téléchargement initial du modèle peut prendre un certain temps.",
+      "listItem4": "IA Responsable : Le contenu généré doit être examiné. Soyez conscient des biais ou des inexactitudes potentiels."
+    },
+    "section6": {
+      "title": "Vérification de la Disponibilité de l'API",
+      "paragraph1": "Avant d'essayer d'utiliser Gemini Nano, il est crucial de vérifier si l'API est disponible dans le navigateur de l'utilisateur. Cela peut être fait en vérifiant l'objet `window.LanguageModel` puis en appelant sa méthode `availability()`.",
+      "paragraph2": "La méthode `availability()` renvoie une chaîne indiquant l'état actuel, tel que `available`, `readilyAvailable`, ou `unavailable`. `readilyAvailable` signifie que le modèle est téléchargé et prêt à être utilisé immédiatement. `available` peut signifier que le modèle doit d'abord être téléchargé.",
+      "codeBlock1_Description": "Exemple de vérification de la disponibilité de l'API :",
+      "codeBlock1": "async function checkApi() {\n  if (window.LanguageModel) {\n    try {\n      const availability = await window.LanguageModel.availability();\n      console.log('Disponibilité de l'API :', availability);\n      // Mettre à jour l'interface utilisateur en fonction de la disponibilité :\n      // 'available' - Le modèle existe mais peut nécessiter un téléchargement.\n      // 'readilyAvailable' - Le modèle est téléchargé et prêt.\n      // 'unavailable' - Aucun modèle disponible / API désactivée / non prise en charge.\n      return availability;\n    } catch (error) {\n      console.error('Erreur lors de la vérification de la disponibilité de l'API :', error);\n      return 'unavailable';\n    }\n  } else {\n    console.log('API window.LanguageModel non trouvée.');\n    return 'unavailable';\n  }\n}\ncheckApi();"
+    },
+    "section7": {
+      "title": "Création d'une Session de Modèle & Paramètres",
+      "paragraph1": "Une fois que vous avez confirmé que l'API est disponible, vous pouvez créer une session de modèle. Une session représente une instance du modèle de langage avec des configurations spécifiques.",
+      "subsection1_title": "Paramètres du Modèle",
+      "subsection1_paragraph1": "Lors de la création d'une session, vous pouvez spécifier des paramètres pour contrôler le comportement du modèle :",
+      "subsection1_listItem1": "`temperature` : Contrôle le caractère aléatoire. Des valeurs plus élevées (ex. 0.8) rendent le résultat plus aléatoire, des valeurs plus basses (ex. 0.2) le rendent plus déterministe. La valeur par défaut est souvent autour de 0.7.",
+      "subsection1_listItem2": "`topK` : Réduit les choix du modèle aux `K` tokens suivants les plus probables. Un `topK` plus bas (ex. 3) rend le résultat plus ciblé et moins diversifié. La valeur par défaut peut être plus élevée (ex. 40).",
+      "subsection1_paragraph2": "Ces paramètres sont généralement définis lors de la création de la session, mais certaines API peuvent permettre de les ajuster plus tard.",
+      "codeBlock1_Description": "Exemple de création d'une session de modèle avec des paramètres :",
+      "codeBlock1": "async function createSession() {\n  if (!window.LanguageModel || await window.LanguageModel.availability() === 'unavailable') {\n    console.log('API LanguageModel non disponible ou modèle indisponible.');\n    return null;\n  }\n  try {\n    const session = await window.LanguageModel.create({\n      temperature: 0.7, // Exemple de température\n      topK: 40,         // Exemple de topK\n      // Ajouter d'autres paramètres comme systemInstruction si pris en charge/nécessaire\n    });\n    console.log('Session créée :', session);\n    return session;\n  } catch (error) {\n    console.error('Erreur lors de la création de la session :', error);\n    return null;\n  }\n}\n// const mySession = await createSession();"
+    },
+    "section8": {
+      "title": "Envoi de Prompts",
+      "paragraph1": "Après avoir créé une session, vous pouvez envoyer des prompts au modèle pour obtenir des réponses. Il y a deux manières principales de recevoir les réponses : en tant que réponse complète unique ou en recevant des morceaux de la réponse en streaming au fur et à mesure de leur génération.",
+      "subsection1_title": "Prompts Simples (Réponse Complète)",
+      "subsection1_paragraph1": "Pour des interactions plus courtes où vous voulez la réponse entière en une seule fois, utilisez la méthode `prompt()`. Cette méthode renvoie une promesse qui se résout avec le texte complet généré par le modèle.",
+      "codeBlock1_Description": "Exemple d'envoi d'un prompt simple :",
+      "codeBlock1": "async function sendSimplePrompt(session, text) {\n  if (!session) {\n    console.error('Session non disponible.');\n    return;\n  }\n  try {\n    console.log('Envoi du prompt :', text);\n    const result = await session.prompt(text);\n    console.log('Réponse complète :', result);\n    // Mettez à jour votre interface utilisateur avec le résultat\n  } catch (error) {\n    console.error('Erreur lors de l'envoi du prompt :', error);\n  }\n}\n// En supposant que 'mySession' est une session active :\n// sendSimplePrompt(mySession, \"Expliquez la physique quantique en termes simples.\");",
+      "subsection2_title": "Prompts en Streaming (Morceaux)",
+      "subsection2_paragraph1": "Pour des réponses plus longues ou un retour en temps réel, le streaming est préférable. La méthode `promptStreaming()` renvoie un flux itérable asynchrone. Vous pouvez parcourir ce flux pour obtenir des morceaux de texte au fur et à mesure que le modèle les génère.",
+      "codeBlock2_Description": "Exemple d'envoi d'un prompt en streaming :",
+      "codeBlock2": "async function sendStreamingPrompt(session, text) {\n  if (!session) {\n    console.error('Session non disponible.');\n    return;\n  }\n  try {\n    console.log('Envoi du prompt en streaming :', text);\n    const stream = session.promptStreaming(text);\n    let fullResponse = '';\n    for await (const chunk of stream) {\n      console.log('Morceau du flux :', chunk);\n      fullResponse += chunk;\n      // Mettez à jour votre interface utilisateur avec le morceau ou la réponse complète accumulée\n    }\n    console.log('Réponse complète en streaming :', fullResponse);\n  } catch (error) {\n    console.error('Erreur lors de l'envoi du prompt en streaming :', error);\n  }\n}\n// En supposant que 'mySession' est une session active :\n// sendStreamingPrompt(mySession, \"Écrivez une nouvelle sur un robot explorant une nouvelle planète.\");"
+    },
+    "section9": {
+      "title": "Téléchargements du Modèle",
+      "paragraph1": "Le modèle Gemini Nano peut nécessiter d'être téléchargé sur l'appareil de l'utilisateur avant de pouvoir être utilisé. La méthode `availability()` de l'API peut renvoyer `'available'`, indiquant qu'un téléchargement pourrait être nécessaire, ou `'readilyAvailable'` s'il est déjà téléchargé.",
+      "paragraph2": "Ce playground gère automatiquement le processus de téléchargement lorsque vous cliquez sur 'Initialiser Modèle'. Vous verrez un indicateur de progression. Si vous construisez votre propre application, vous devriez typiquement lancer la création d'une session, et le navigateur gérerait le téléchargement si nécessaire, en fournissant éventuellement la progression via des événements de l'API si la spécification le permet (le mécanisme exact peut varier).",
+      "paragraph3": "Assurez-vous que les utilisateurs sont informés qu'un téléchargement peut avoir lieu, en particulier sur des connexions facturées à l'usage. Fournir un retour clair pendant ce processus est essentiel pour une bonne expérience utilisateur."
+    },
+    "section10": {
+      "title": "Gestion des Erreurs",
+      "paragraph1": "Il est important de mettre en œuvre une gestion robuste des erreurs lorsque vous travaillez avec l'API Gemini Nano. Des opérations comme la vérification de la disponibilité, la création d'une session ou l'envoi de prompts peuvent échouer pour diverses raisons (par ex., API désactivée, pas de réseau, erreurs internes).",
+      "paragraph2": "Utilisez toujours des blocs `try...catch` autour des appels API asynchrones pour gérer gracieusement les erreurs potentielles et fournir un retour à l'utilisateur.",
+      "codeBlock1_Description": "Approche générale de la gestion des erreurs (conceptuelle) :",
+      "codeBlock1": "async function performAiTask() {\n  try {\n    // Exemple : Vérifier la disponibilité\n    if (!window.LanguageModel || await window.LanguageModel.availability() === 'unavailable') {\n      throw new Error('Le modèle IA n'est pas disponible.');\n    }\n\n    // Exemple : Créer une session\n    const session = await window.LanguageModel.create({ /* params */ });\n    if (!session) {\n      throw new Error('Échec de la création de la session IA.');\n    }\n\n    // Exemple : Envoyer un prompt\n    const response = await session.prompt(\"Votre prompt ici\");\n    // Traiter la réponse\n\n  } catch (error) {\n    console.error(\"Une erreur est survenue :\", error.message);\n    // Mettre à jour l'interface utilisateur pour informer l'utilisateur (ex : afficher error.message)\n  }\n}\n// performAiTask();",
+      "paragraph3": "Inspectez l'objet d'erreur pour plus de détails. L'API pourrait lancer des types d'erreurs spécifiques ou fournir des codes d'erreur à l'avenir, ce qui peut aider à diagnostiquer les problèmes."
+    }
   }
 }
