@@ -13,4 +13,5 @@ export { SetupModal } from './SetupModal';
 export { Slider } from './Slider';
 export { StatusDisplay } from './StatusDisplay';
 export { StatusIndicator } from './StatusIndicator';
+export { default as GeminiNanoGuide } from './GeminiNanoGuide';
 

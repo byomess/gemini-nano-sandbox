@@ -7,7 +7,8 @@ import {
     OutputDisplay,
     PromptInterface,
     SetupModal,
-    StatusDisplay
+    StatusDisplay,
+    GeminiNanoGuide
 } from './components';
 import { useGeminiNano } from './hooks/useGeminiNano';
 
@@ -36,6 +37,7 @@ export default function App() {
     // Estado local para o prompt e modal
     const [prompt, setPrompt] = useState('');
     const [showSetupModal, setShowSetupModal] = useState(false);
+    const [showGuide, setShowGuide] = useState(false);
 
     // Efeito para mostrar o modal quando a API não estiver disponível ou houver erro específico
     useEffect(() => {
@@ -72,7 +74,14 @@ export default function App() {
     // Função para enviar prompt
     const handlePromptSend = () => {
         handleSendPrompt(prompt, true);
-    };    // --- Renderização do Componente ---
+    };
+
+    // Função para alternar a visibilidade do guia
+    const toggleGuideVisibility = () => {
+        setShowGuide(!showGuide);
+    };
+
+    // --- Renderização do Componente ---
     return (
         <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-200 min-h-screen font-sans flex flex-col relative overflow-hidden">
             {/* Elementos de fundo animados */}
@@ -149,41 +158,47 @@ export default function App() {
                         </div>
                     </div>
 
-                    {/* Área Principal - Chat Interface */}
+                    {/* Área Principal - Chat Interface OU Guia */}
                     <div className="flex-1 flex flex-col min-h-0">
-                        {status === 'ready' && (
-                            <div className="flex flex-col gap-6 h-full">
-                                {/* Interface de Prompt */}
-                                <PromptInterface
-                                    prompt={prompt}
-                                    isLoading={isLoading}
-                                    onPromptChange={setPrompt}
-                                    onSendPrompt={handlePromptSend}
-                                    onStop={handleStop}
-                                />
-                                
-                                {/* Output Display */}
-                                <OutputDisplay output={output} />
-                            </div>
-                        )}
+                        {showGuide ? (
+                            <GeminiNanoGuide />
+                        ) : (
+                            <>
+                                {status === 'ready' && (
+                                    <div className="flex flex-col gap-6 h-full">
+                                        {/* Interface de Prompt */}
+                                        <PromptInterface
+                                            prompt={prompt}
+                                            isLoading={isLoading}
+                                            onPromptChange={setPrompt}
+                                            onSendPrompt={handlePromptSend}
+                                            onStop={handleStop}
+                                        />
 
-                        {/* Message when not ready */}
-                        {status !== 'ready' && (
-                            <div className="flex-1 flex items-center justify-center">
-                                <div className="text-center p-8">
-                                    <div className="text-6xl mb-4 animate-pulse">🤖</div>
-                                    <h3 className="text-xl font-semibold text-slate-300 mb-2">
-                                        {status === 'downloading' ? t('app.downloadingTitle') : 
-                                         status === 'initializing' ? t('app.initializingTitle') : 
-                                         t('app.setupTitle')}
-                                    </h3>
-                                    <p className="text-slate-500">
-                                        {status === 'downloading' ? t('app.downloadingDescription') :
-                                         status === 'initializing' ? t('app.initializingDescription') :
-                                         t('app.setupDescription')}
-                                    </p>
-                                </div>
-                            </div>
+                                        {/* Output Display */}
+                                        <OutputDisplay output={output} />
+                                    </div>
+                                )}
+
+                                {/* Message when not ready */}
+                                {status !== 'ready' && (
+                                    <div className="flex-1 flex items-center justify-center">
+                                        <div className="text-center p-8">
+                                            <div className="text-6xl mb-4 animate-pulse">🤖</div>
+                                            <h3 className="text-xl font-semibold text-slate-300 mb-2">
+                                                {status === 'downloading' ? t('app.downloadingTitle') :
+                                                 status === 'initializing' ? t('app.initializingTitle') :
+                                                 t('app.setupTitle')}
+                                            </h3>
+                                            <p className="text-slate-500">
+                                                {status === 'downloading' ? t('app.downloadingDescription') :
+                                                 status === 'initializing' ? t('app.initializingDescription') :
+                                                 t('app.setupDescription')}
+                                            </p>
+                                        </div>
+                                    </div>
+                                )}
+                            </>
                         )}
                     </div>
                 </main>
@@ -192,11 +207,17 @@ export default function App() {
                 <footer className="mt-12 text-center text-sm text-slate-500 relative">
                     <div className="max-w-2xl mx-auto">
                         <p className="mb-2">{t('footer.description')}</p>
-                        <div className="flex items-center justify-center gap-4 text-xs">
+                        <div className="flex items-center justify-center gap-4 text-xs mb-2">
                             <span>Powered by Gemini Nano</span>
                             <span>•</span>
                             <span>Built with React + TypeScript</span>
                         </div>
+                        <button
+                            onClick={toggleGuideVisibility}
+                            className="text-purple-400 hover:text-purple-300 transition-colors duration-200 text-xs"
+                        >
+                            {t(showGuide ? 'app.footer.hideGuideLink' : 'app.footer.showGuideLink')}
+                        </button>
                     </div>
                 </footer>
             </div>

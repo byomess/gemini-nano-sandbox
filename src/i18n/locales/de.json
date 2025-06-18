@@ -63,7 +63,11 @@
     "initializingTitle": "Initialisierung...",
     "setupDescription": "Klicken Sie auf \"Start\" im Seitenpanel, um zu beginnen.",
     "downloadingDescription": "Das Modell wird im Hintergrund heruntergeladen.",
-    "initializingDescription": "KI wird für die Nutzung vorbereitet."
+    "initializingDescription": "KI wird für die Nutzung vorbereitet.",
+    "footer": {
+      "showGuideLink": "[de] Show Gemini Nano Guide",
+      "hideGuideLink": "[de] Hide Gemini Nano Guide"
+    }
   },
   "prompt": {
     "placeholder": "Geben Sie hier Ihre Frage oder Ihren Prompt ein...",
@@ -164,5 +168,40 @@
   },
   "language": {
     "selector": "Sprache"
+  },
+  "guide": {
+    "title": "[de] Gemini Nano Guide",
+    "section1": {
+      "title": "[de] Introduction",
+      "paragraph1": "[de] This guide helps you get started with the Gemini Nano API integrated into this playground."
+    },
+    "section2": {
+      "title": "[de] What is Gemini Nano?",
+      "paragraph1": "[de] Gemini Nano is Google's most efficient model built for on-device tasks. It runs directly on user devices, leveraging hardware acceleration for fast and offline-capable AI features.",
+      "paragraph2": "[de] This version of Gemini Nano is integrated into Chrome and can be accessed via the `window.ai` API, allowing web developers to bring generative AI capabilities to their web applications."
+    },
+    "section3": {
+      "title": "[de] Key Features",
+      "listItem1": "[de] On-Device Processing: Ensures user privacy and enables offline functionality by running directly in the browser.",
+      "listItem2": "[de] Text Generation: Capable of generating coherent and contextually relevant text based on prompts.",
+      "listItem3": "[de] Efficiency: Optimized for resource-constrained environments, providing a balance between performance and model size.",
+      "listItem4": "[de] Web Platform Integration: Accessible through the `window.ai` API in Chrome, making it easy for web developers to use."
+    },
+    "section4": {
+      "title": "[de] How to Use This Playground",
+      "paragraph1": "[de] This playground provides an interactive way to test Gemini Nano's capabilities:",
+      "listItem1": "[de] Control Panel: Adjust model parameters like Temperature and Top-K to see how they affect the output. Initialize or restart the model if needed.",
+      "listItem2": "[de] Prompt Interface: Type your questions or instructions into the text area and click 'Send'. You can also try the provided prompt suggestions.",
+      "listItem3": "[de] Output Display: View the model's generated response. Note that generation can be stopped using the 'Stop' button.",
+      "paragraph2": "[de] Experiment with different prompts and settings to understand the model's behavior."
+    },
+    "section5": {
+      "title": "[de] Important Considerations",
+      "paragraph1": "[de] While Gemini Nano is powerful, keep these points in mind:",
+      "listItem1": "[de] Experimental Technology: This is an experimental feature. The API and model capabilities may change.",
+      "listItem2": "[de] Browser Compatibility: Currently, it's primarily available in Chrome versions that support the built-in AI SDK (e.g., Chrome Canary/Dev with specific flags enabled).",
+      "listItem3": "[de] Performance: Performance can vary based on your device hardware. The initial model download may take some time.",
+      "listItem4": "[de] Responsible AI: Generated content should be reviewed. Be mindful of potential biases or inaccuracies."
+    }
   }
 }
